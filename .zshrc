@@ -11,8 +11,9 @@ git-clean-merged-branch() {
     for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done
 }
 gitblame() {
-git ls-files $1 | xargs git blame
+git ls-files -- "$1" | xargs git blame
 }
+autoload -Uz compinit && compinit
 export PATH=$PATH:~/Downloads/apache-maven-3.2.1/bin/:.:/usr/local/mysql/bin
 
 #Dev dir
@@ -56,6 +57,8 @@ export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 
 }
 
+alias python=/usr/local/bin/python3
+alias pip=/usr/local/bin/pip3
 #Cordova setup
 #export ANT_HOME=/usr/local/homebrew/Cellar/ant/1.9.4
 #export ANDROID_HOME=/Applications/Android\ Studio.app/Contents/lib/
