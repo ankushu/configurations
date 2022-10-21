@@ -1,0 +1,1 @@
+gh_api --method PUT orgs/{org}/teams/{team}/memberships/{userName} #gh_api is alias set in .zhsrc, e.g. gh_api --method PUT orgs/it-devops/teams/dcx-productivity-team/memberships/tejaram-bade
