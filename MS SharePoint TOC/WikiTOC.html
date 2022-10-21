@@ -1,0 +1,84 @@
+<!-- reference: https://social.technet.microsoft.com/wiki/contents/articles/34455.sharepoint-wiki-automatically-generating-a-table-of-contents.aspx -->
+<style>
+
+#toc {
+
+ display: table;
+
+ border: 1px solid #aaa;
+
+ background-color: #f9f9f9;
+
+ font-size: 95%;
+
+ padding: 7px;
+
+}
+
+#toc #tocHeader  {
+
+ font-weight: bold;
+
+ text-align: center;
+
+}
+
+#toc a:before { /* content:"• "; */ }
+
+#toc a { line-height: 15px; margin: 10px; }
+
+#toc .toc_Level1 { margin-left: 5px; }
+
+#toc .toc_Level2 { margin-left: 15px; }
+
+#toc .toc_Level3 { margin-left: 25px; }
+
+#toc .toc_Level4 { margin-left: 35px; }
+
+</style>
+
+<div id="toc"></div>
+
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+
+<script type="text/javascript">
+
+function GenerateTOC() {
+
+  $("#toc").append('<p id="tocHeader">Contents</p>');
+
+  $(".ms-rteElement-H1, .ms-rteElement-H1B, .ms-rteElement-H2, .ms-rteElement-H2B, .ms-rteElement-H3, .ms-rteElement-H3B, .ms-rteElement-H4, .ms-rteElement-H4B").each(function(i) {
+
+ var currentNode = $(this);
+
+  currentNode.attr("id", "title" + i);
+
+ var linkClass = (currentNode.hasClass('ms-rteElement-H1') || currentNode.hasClass('ms-rteElement-H1B'))
+
+   ? "toc_Level1"
+
+   : (currentNode.hasClass('ms-rteElement-H2') || currentNode.hasClass('ms-rteElement-H2B'))
+
+   ? "toc_Level2"
+
+   : (currentNode.hasClass('ms-rteElement-H3') || currentNode.hasClass('ms-rteElement-H3B'))
+
+   ? "toc_Level3"
+
+   : (currentNode.hasClass('ms-rteElement-H4') || currentNode.hasClass('ms-rteElement-H4B'))
+
+   ? "toc_Level4"
+
+   : "";
+
+  $("#toc").append("<a id='link'" + i + "' class='" + linkClass + "' href='#title" + i + "' title='" + currentNode.attr("tagName") + "'>" + currentNode.html() + "</a><br>");
+
+  currentNode.append(" <a href='#tocHeader'>[top]</a>");
+
+  });
+
+}
+
+_spBodyOnLoadFunctionNames.push('GenerateTOC');
+
+</script>
