@@ -1,10 +1,11 @@
 #!/bin/bash
+set linenumbers
 #source /usr/local/Homebrew/Library/Taps/now/homebrew-devtools/etc/bashrc
 [ -f /usr/local/homebrew-now/etc/bashrc ] && source /usr/local/homebrew-now/etc/bashrcalias gerrit="git push origin HEAD:refs/for/master"
-alias gerrit-wo-branch="git push origin HEAD:refs/for/"
-alias mysql-server="/usr/local/Cellar/mysql56/5.6.37/support-files/mysql.server"
+# alias gerrit-wo-branch="git push origin HEAD:refs/for/"
+# alias mysql-server="/usr/local/Cellar/mysql56/5.6.37/support-files/mysql.server"
 alias sublime="/Applications/Sublime\ Text\ 2.app/Contents/MacOS/Sublime\ Text\ 2"
-alias gerrit="git push origin HEAD:refs/for/master"
+# alias gerrit="git push origin HEAD:refs/for/master"
 alias gitstatus="git fetch -p;git status"
 # alias git-clean-merged-branch="git branch -vv | grep ': gone' | awk '{print $1}' | xargs git branch -D"
 git-clean-merged-branch() {
@@ -57,23 +58,30 @@ export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 
 }
 
-alias python=/usr/local/bin/python3
-alias pip=/usr/local/bin/pip3
+alias python=/usr/bin/python3
+alias pip=/usr/bin/pip3
 #Cordova setup
 #export ANT_HOME=/usr/local/homebrew/Cellar/ant/1.9.4
 #export ANDROID_HOME=/Applications/Android\ Studio.app/Contents/lib/
-export ANDROID_HOME=~/Library/Android/sdk
+#export ANDROID_HOME=~/Library/Android/sdk
 export PATH=$PATH:$ANT_HOME:$ANDROID_HOME
 
 setjdk 1.8
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-source ~/.profile
+#source ~/.profile
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#Claude
+export PATH=$HOME/.local/bin:$PATH
+export NODE_EXTRA_CA_CERTS=~/Downloads/zscaler_root_ca.pem
+
+#Windsurf
+alias windsurf="~/Applications/Windsurf.app/Contents/MacOS/Electron"
 
 # added by Anaconda3 2019.07 installer
 # >>> conda init >>>
